@@ -4,8 +4,8 @@
 
 #### 입력
 
-- [ ] 1 ~ 9 까지 서로 다른 수 3개 입력
-  - IllegalArgumentException
+- [x] 1 ~ 9 까지 서로 다른 수 3개 입력
+  - [ ] IllegalArgumentException
     - 3자리가 아닐 때
     - 0이 있을 때
     - 같은 숫자가 있을 때
