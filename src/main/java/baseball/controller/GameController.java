@@ -1,5 +1,6 @@
 package baseball.controller;
 
+import baseball.service.ComputerService;
 import baseball.service.PlayerService;
 import baseball.view.InputView;
 
@@ -9,10 +10,13 @@ import java.util.Scanner;
 public class GameController {
     public static void playBaseballGame() {
         startGame();
+        System.out.println("정답: " + ComputerService.generateComputerNumber());
+        System.out.println(InputView.askContinue());
     }
 
     public static void startGame() {
-        System.out.print(PlayerService.generatePlayerNumber(InputView.scanNumber()));
+        String number = InputView.scanNumber();
+        PlayerService.generatePlayerNumber(number);
     }
 
 

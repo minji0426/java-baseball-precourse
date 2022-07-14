@@ -10,8 +10,8 @@
     - 0이 있을 때
     - 같은 숫자가 있을 때
     - 문자가 있을 때
-- [ ] 재시작/종료를 구분하는 1/2 입력
-  - IllegalArgumentException
+- [x] 재시작/종료를 구분하는 1/2 입력
+  - [ ] IllegalArgumentException
     - 1,2가 아닌 다른 수 일 때
     - 문자일 때
 

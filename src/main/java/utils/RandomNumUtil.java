@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class RandomNum {
+public class RandomNumUtil {
     public static List<Integer> generateRandomNum(){
         List<Integer> ComputerNum = new ArrayList<>();
         while(ComputerNum.size() < 3){
