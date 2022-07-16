@@ -8,19 +8,37 @@ import java.util.List;
 public class HintService {
     public static Hint generateHint(List<Integer> computerNumber, List<Integer> playerNumber) {
         Hint hint = new Hint(0,0);
-        hint.isBall(computerNumber,playerNumber);
-        hint.isStrike(computerNumber,playerNumber);
+
+        int strikeNum = isStrike(computerNumber, playerNumber);
+        int ballNum = isBall(computerNumber, playerNumber) - strikeNum;
+
+        hint.setStrike(strikeNum);
+        hint.setBall(ballNum);
 
         return hint;
     }
 
-    public static List<Integer> getHint(Hint hint) {
-        List<Integer> finalHint = new ArrayList<>();
+    public static int isStrike(List<Integer> computerNumber, List<Integer> playerNumber){
+        int strike = 0;
 
-        finalHint.add(hint.getBall());
-        finalHint.add(hint.getStrike());
+        for (int i = 0; i < 3; i++) {
+            if (playerNumber.get(i).equals(computerNumber.get(i))) {
+                strike++;
+            }
+        }
 
-        return finalHint;
+        return  strike;
     }
 
+    public static int isBall(List<Integer> computerNumber, List<Integer> playerNumber){
+        int ball = 0;
+
+        for (Integer num : playerNumber) {
+            if (computerNumber.contains(num)) {
+                ball++;
+            }
+        }
+
+        return ball;
+    }
 }

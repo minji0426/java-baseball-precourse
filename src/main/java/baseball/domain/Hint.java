@@ -18,20 +18,12 @@ public class Hint {
     public int getBall() {
         return ball;
     }
-    public void isBall(List<Integer> computerNumber, List<Integer> playerNumber) {
-        for (Integer num : playerNumber) {
-            if (computerNumber.contains(num)) {
-                ball++;
-            }
-        }
+
+    public void setStrike(int strike) {
+        this.strike = strike;
     }
 
-    public void isStrike(List<Integer> computerNumber, List<Integer> playerNumber) {
-        for (int i = 0; i < 3; i++) {
-            if (playerNumber.get(i).equals(computerNumber.get(i))) {
-                strike++;
-                ball--;
-            }
-        }
+    public void setBall(int ball) {
+        this.ball = ball;
     }
 }

@@ -18,20 +18,16 @@ public class GameController {
         List<Integer> computerNumber = ComputerService.generateComputerNumber(); //랜덤 수 생성
 
         String number = InputView.scanNumber();
-        List<Integer> playerNumber = PlayerService.generatePlayerNumber(number); //플레이어 수
+        List<Integer> playerNumber = PlayerService.generatePlayerNumber(number); //플레이어 숫자
 
         System.out.println(computerNumber + ", " + playerNumber); //랜덤수. 플레이어 수 출력
-        provideHint(ComputerService.generateComputerNumber(), playerNumber); // 힌트 출력
+        getHint(computerNumber, playerNumber); // 힌트 출력
     }
 
-    public static void provideHint(List<Integer> computerNumber,List<Integer> playerNumber) {
+    public static void getHint(List<Integer> computerNumber,List<Integer> playerNumber) {
         Hint hint = HintService.generateHint(computerNumber, playerNumber);
-        List<Integer> totalHint = HintService.getHint(hint);
 
-        int ball = totalHint.get(0);
-        int strike = totalHint.get(1);
-
-        System.out.println( ball + "볼 " + strike + "스트라이크");
+        System.out.println( hint.getBall() + "볼 " + hint.getStrike() + "스트라이크");
     }
 
 
