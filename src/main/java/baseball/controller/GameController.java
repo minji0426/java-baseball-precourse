@@ -41,10 +41,6 @@ public class GameController {
     }
 
     public static Boolean finishGame() {
-        if (InputView.askContinue() == 1) {
-            return false;
-        }
-        return true;
+        return InputView.askContinue() != 1; //1이면 true 아니면 false
     }
-
 }
