@@ -5,10 +5,8 @@ import baseball.service.ComputerService;
 import baseball.service.HintService;
 import baseball.service.PlayerService;
 import baseball.view.InputView;
-import com.sun.org.apache.xpath.internal.operations.Bool;
 
 import java.util.List;
-import java.util.Scanner;
 
 public class GameController {
     public static void playBaseballGame() {
@@ -19,7 +17,6 @@ public class GameController {
 
     public static void startGame() {
         List<Integer> computerNumber = ComputerService.generateComputerNumber();//랜덤 수 생성
-        System.out.println(computerNumber);
 
         while(true) {
             String number = InputView.scanNumber();
