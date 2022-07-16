@@ -13,12 +13,12 @@ public class InputView {
         return number;
     }
 
-    public static String askContinue(){
-        String status;
+    public static Integer askContinue(){
+        int status;
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        status = scanner.nextLine();
+        status = scanner.nextInt();
 
         return status;
     }

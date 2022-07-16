@@ -5,30 +5,49 @@ import baseball.service.ComputerService;
 import baseball.service.HintService;
 import baseball.service.PlayerService;
 import baseball.view.InputView;
+import com.sun.org.apache.xpath.internal.operations.Bool;
 
 import java.util.List;
 import java.util.Scanner;
 
 public class GameController {
     public static void playBaseballGame() {
-        startGame();
+        do {
+            startGame();
+        } while(!finishGame());
     }
 
     public static void startGame() {
-        List<Integer> computerNumber = ComputerService.generateComputerNumber(); //랜덤 수 생성
+        List<Integer> computerNumber = ComputerService.generateComputerNumber();//랜덤 수 생성
+        System.out.println(computerNumber);
 
-        String number = InputView.scanNumber();
-        List<Integer> playerNumber = PlayerService.generatePlayerNumber(number); //플레이어 숫자
+        while(true) {
+            String number = InputView.scanNumber();
+            List<Integer> playerNumber = PlayerService.generatePlayerNumber(number); //플레이어 숫자
 
-        System.out.println(computerNumber + ", " + playerNumber); //랜덤수. 플레이어 수 출력
-        getHint(computerNumber, playerNumber); // 힌트 출력
+            if (isAnswer(computerNumber, playerNumber)) {
+                break;
+            }
+        }
     }
 
-    public static void getHint(List<Integer> computerNumber,List<Integer> playerNumber) {
+    public static Boolean isAnswer(List<Integer> computerNumber, List<Integer> playerNumber) {
         Hint hint = HintService.generateHint(computerNumber, playerNumber);
 
-        System.out.println( hint.getBall() + "볼 " + hint.getStrike() + "스트라이크");
+        if (hint.getStrike() == 3) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            return true;
+        } else {
+            System.out.println(hint.getBall() + "볼 " + hint.getStrike() + "스트라이크");
+            return false;
+        }
     }
 
+    public static Boolean finishGame() {
+        if (InputView.askContinue() == 1) {
+            return false;
+        }
+        return true;
+    }
 
 }
